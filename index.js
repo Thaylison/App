@@ -1,10 +1,37 @@
-const start = () => {
+const { select } = require('@inquirer/prompts')
+
+const start = async () => { // sempre que utilizar o await, a função tem que ser async
 
     while(true ) {
-        let opcao = "cadastrar";
+       
+        const opcao = await select({
+            message: "Menu >",
+            choices: [
+                {
+                    name: "Cadastrar meta",
+                    value: "cadastrar"
+                },
+                {
+                    name: "Listar metas",
+                    value: "lsitar"
+                },
+                {
+                    name: "Sair",
+                    value: "sair"
+                }
+            ]
+        }) // await significa que vai aguardar o usuário escolher a opção
 
         switch(opcao){
             case "cadastrar":
+                console.log("vamos cadastrar");
+                break;
+            case "listar":
+                console.log("vamos listar");
+                break;
+            case "sair":
+                console.log("até a proxima!");
+                return;
         }
     }
 }
